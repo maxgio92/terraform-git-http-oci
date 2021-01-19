@@ -28,9 +28,18 @@ Terraform OCI image that allows to manage Terraform git modules on private repos
 
 ### Example
 
+```shell
+docker run --rm \
+      -e GIT_AUTH_URL="https://github.com" \
+      -e GIT_TOKEN="${GIT_TOKEN}" \
+      -v $(pwd):/workspace -w /workspace \
+      maxgio92/terraform-git-http:0.13.6 \
+      terraform init
+```
+
 #### [`azure-pipelines.yml`](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops):
 
-```
+```yaml
 variables:
 - name: gitAuthUrl
   value: https://github.com
