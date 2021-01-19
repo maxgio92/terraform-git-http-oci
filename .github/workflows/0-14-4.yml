@@ -1,0 +1,27 @@
+name: 'Terraform 0.14.4'
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --build-arg TERRAFORM_VERSION=0.14.4 -t maxgio92/terraform-git-http-oci:0.14.4
+    - name: Docker Login
+      uses: docker/login-action@v1.8.0
+      with:
+        username: maxgio92
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        logout: true
+      if: github.event_name == 'push'
+    - name: Publish the Docker image
+      run: docker push maxgio92/terraform-git-http-oci:0.14.4
+      if: github.event_name == 'push'
