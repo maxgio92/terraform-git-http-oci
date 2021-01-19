@@ -1,10 +1,10 @@
-# Terraform Git HTTP OCI
+# terraform-git-http-oci
 
-Terraform OCI image that allows to manage Terraform git modules on private repositories with HTTP-based authentications:
-- Basic HTTP
-- Bearer token as parth of OAuth flows
+Terraform OCI image that allows to manage Terraform git modules on private repositories with [HTTP-based authentications](https://tools.ietf.org/html/rfc7235):
+- [Basic](https://tools.ietf.org/html/rfc7617)
+- [Bearer](https://tools.ietf.org/html/rfc6750) token as parth of OAuth authorization flows
 
-## [Basic](https://tools.ietf.org/html/rfc2617)
+## [Basic](https://tools.ietf.org/html/rfc7617)
 
 ### Required environment variables
 
