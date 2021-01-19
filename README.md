@@ -18,3 +18,24 @@ Terraform OCI image that allows to manage Terraform git modules on private repos
 
 - `GIT_AUTH_URL`: the URL of the Git server that will be the [context](https://git-scm.com/docs/gitcredentials#_credential_contexts) for which configure the credentials.
 - `GIT_TOKEN`: the bearer token value.
+
+### Example
+
+#### `azure-pipelines.yml`:
+
+```
+variables:
+- name: gitAuthUrl
+  value: https://github.com
+steps:
+- script: |
+    docker run \
+      -e GIT_AUTH_URL="${GIT_AUTH_URL}" \
+      -e GIT_TOKEN="${SYSTEM_ACCESSTOKEN}" \
+      --rm -v $(pwd):/workspace -w /workspace \
+      maxgio92/terraform-git-http:0.13.6 \
+      terraform init ./src
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    GIT_AUTH_URL: ${{ variables.gitAuthUrl }}
+```
