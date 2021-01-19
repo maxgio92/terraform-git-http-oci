@@ -12,6 +12,8 @@ Terraform OCI image that allows to manage Terraform git modules on private repos
 - `GIT_USER`: the username value.
 - `GIT_PASS`: the password value.
 
+**Note**: these environment variables are additional to the already Terraform-supported ones.
+
 ## [Bearer](https://tools.ietf.org/html/rfc6750)
 
 ### Required environment variables
@@ -19,9 +21,11 @@ Terraform OCI image that allows to manage Terraform git modules on private repos
 - `GIT_AUTH_URL`: the URL of the Git server that will be the [context](https://git-scm.com/docs/gitcredentials#_credential_contexts) for which configure the credentials.
 - `GIT_TOKEN`: the bearer token value.
 
+**Note**: these environment variables are additional to the already Terraform-supported ones.
+
 ### Example
 
-#### `azure-pipelines.yml`:
+#### [`azure-pipelines.yml`](https://docs.microsoft.com/en-us/azure/devops/pipelines/yaml-schema?view=azure-devops):
 
 ```
 variables:
@@ -38,4 +42,16 @@ steps:
   env:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
     GIT_AUTH_URL: ${{ variables.gitAuthUrl }}
+```
+
+# Build
+
+## Different Terraform versions
+
+### Build args:
+
+- `TERRAFORM_VERSION`: the version tag of [`hashicorp/terraform`](https://hub.docker.com/r/hashicorp/terraform) OCI image this image will start from.
+
+```
+docker build . --build-arg TERRAFORM_VERSION=<Terraform version>
 ```
