@@ -19,6 +19,8 @@ jobs:
 
   publish:
 
+    if: github.event_name == 'push'
+
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +30,5 @@ jobs:
         username: maxgio92
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
         logout: true
-      if: github.event == 'push'
     - name: Publish the Docker image
       run: docker push maxgio92/terraform-git-http-oci:0.13.6
-      if: github.event == 'push'
