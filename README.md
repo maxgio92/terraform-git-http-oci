@@ -39,3 +39,15 @@ steps:
     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
     GIT_AUTH_URL: ${{ variables.gitAuthUrl }}
 ```
+
+# Build
+
+## Different Terraform versions
+
+### Build args:
+
+- `TERRAFORM_VERSION`: the version tag of `hashicorp/terraform` OCI image this image will start from.
+
+```
+docker build . --build-arg TERRAFORM_VERSION=<Terraform version>
+```
