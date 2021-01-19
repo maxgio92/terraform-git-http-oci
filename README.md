@@ -1,5 +1,8 @@
 # terraform-git-http-oci
 
+![0.14.4](https://github.com/maxgio92/terraform-git-http-oci/workflows/Docker%20Image%20CI/badge.svg?branch=0.14.4)
+![0.13.6](https://github.com/maxgio92/terraform-git-http-oci/workflows/Docker%20Image%20CI/badge.svg?branch=0.13.6)
+
 Terraform OCI image that allows to manage Terraform git modules on private repositories with [HTTP-based authentications](https://tools.ietf.org/html/rfc7235):
 - [Basic](https://tools.ietf.org/html/rfc7617)
 - [Bearer](https://tools.ietf.org/html/rfc6750) token as parth of OAuth authorization flows
